@@ -24,7 +24,7 @@ STEP 8: Use heatmap method of representation to show relationships between two v
 
 ## CODING AND OUTPUT
         <<INCLUDE YOUR CODING AND OUTPUT SCREENSHOTS>>
-
+````
 # STEP 1 - Importing Libraries and Loading Dataset
 
 import pandas as pd
@@ -134,6 +134,6 @@ plt.title("Correlation Heatmap - Titanic Dataset")
 plt.show()
 
 <img width="706" height="597" alt="WhatsApp Image 2026-05-13 at 4 05 20 PM" src="https://github.com/user-attachments/assets/a8310e32-60fb-4e86-a469-e039d54cc9d3" />
-
+````
 # RESULT
-        <<INCLUDE YOUR RESULT HERE>>
+The Program and The Output has been sucessfully Verified along with the Visualization .
