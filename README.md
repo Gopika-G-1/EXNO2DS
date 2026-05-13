@@ -39,19 +39,20 @@ print(data.head())
 print("\nDataset Info:\n")
 print(data.info())
 print(data.describe())
+````
 <img width="981" height="697" alt="WhatsApp Image 2026-05-13 at 4 01 58 PM" src="https://github.com/user-attachments/assets/7692fcf5-dffb-47ad-9876-8cee6252d451" />
 
 # STEP 2 - Handling Missing Values
-
+````
 for column in data.columns:
     if data[column].dtype == 'object':
         data[column] = data[column].fillna(data[column].mode()[0])   # Mode for categorical
     else:
         data[column] = pd.to_numeric(data[column], errors='coerce')
         data[column] = data[column].fillna(data[column].median())   # Median for numerical
-
+````
 # STEP 3 - Outlier Detection
-
+````
 plt.figure(figsize=(6,4))
 sns.boxplot(x=data["Age"])
 plt.title("Boxplot - Age")
@@ -61,13 +62,14 @@ plt.figure(figsize=(6,4))
 sns.boxplot(x=data["Fare"])
 plt.title("Boxplot - Fare")
 plt.show()
+````
 <img width="520" height="455" alt="WhatsApp Image 2026-05-13 at 4 02 30 PM" src="https://github.com/user-attachments/assets/e8383c86-cd66-45ad-83ac-4bf15d00d2c7" />
 
 <img width="489" height="393" alt="WhatsApp Image 2026-05-13 at 4 02 43 PM" src="https://github.com/user-attachments/assets/30b9a40e-3f6b-4acd-bd24-f9bdb8653a3c" />
 
 
 # STEP 4 - Outlier Removal using IQR Method
-
+````
 def remove_outliers_iqr(df, column):
     Q1 = df[column].quantile(0.25)
     Q3 = df[column].quantile(0.75)
@@ -80,11 +82,11 @@ print("Outliers for Age:", remove_outliers_iqr(data, "Age").shape)
 print("Outliers for Fare:", remove_outliers_iqr(data, "Fare").shape)
 
 print("Outliers removed using IQR method.\n")
-
+````
 <img width="440" height="84" alt="WhatsApp Image 2026-05-13 at 4 03 07 PM" src="https://github.com/user-attachments/assets/3c129c2c-e139-480b-bf71-fd052aa48bb3" />
 
 # STEP 5 - Data Visualization Using Countplots
-
+````
 plt.figure(figsize=(6,4))
 sns.countplot(x="Survived", data=data)
 plt.title("Countplot - Survival Distribution")
@@ -99,12 +101,13 @@ plt.figure(figsize=(6,4))
 sns.countplot(x="Pclass", data=data)
 plt.title("Countplot - Passenger Class Distribution")
 plt.show()
+````
 <img width="540" height="393" alt="WhatsApp Image 2026-05-13 at 4 03 29 PM" src="https://github.com/user-attachments/assets/de30af85-a729-4b4d-ba5b-eb8b2a29f90a" />
 <img width="540" height="393" alt="WhatsApp Image 2026-05-13 at 4 03 40 PM" src="https://github.com/user-attachments/assets/09e7037c-1f7d-43fe-ad6f-9a017fa57839" />
 <img width="540" height="393" alt="WhatsApp Image 2026-05-13 at 4 03 50 PM" src="https://github.com/user-attachments/assets/268862c1-3d6d-4def-acb6-91766e629f34" />
 
 # STEP 6 - Data Visualization Using Displots
-
+````
 sns.displot(data["Age"], kde=True, height=4, aspect=1.5)
 plt.title("Displot - Age Distribution")
 plt.show()
@@ -112,28 +115,30 @@ plt.show()
 sns.displot(data["Fare"], kde=True, height=4, aspect=1.5)
 plt.title("Displot - Fare Distribution")
 plt.show()
+````
 <img width="590" height="412" alt="WhatsApp Image 2026-05-13 at 4 04 14 PM" src="https://github.com/user-attachments/assets/b6b36b61-70b9-424a-aff4-6846ffab2254" />
 <img width="590" height="412" alt="WhatsApp Image 2026-05-13 at 4 04 28 PM" src="https://github.com/user-attachments/assets/a08902b4-4871-408d-8bd2-b70b1b29f352" />
 
 # STEP 7 - Cross Tabulation
-
+````
 print("\nCross Tabulation: SibSp vs Survived\n")
 print(pd.crosstab(data["SibSp"], data["Survived"]))
 
 print("\nCross Tabulation: Pclass vs Survived\n")
 print(pd.crosstab(data["Pclass"], data["Survived"]))
+````
 <img width="499" height="501" alt="WhatsApp Image 2026-05-13 at 4 04 54 PM" src="https://github.com/user-attachments/assets/3a8b6057-d504-445b-8936-58cece1b2e8c" />
 
 
 # STEP 8 - Heatmap of Correlation Analysis
-
+```
 plt.figure(figsize=(8,6))
 correlation_matrix = data.select_dtypes(include=np.number).corr()
 sns.heatmap(correlation_matrix, annot=True, cmap="coolwarm")
 plt.title("Correlation Heatmap - Titanic Dataset")
 plt.show()
-
+```
 <img width="706" height="597" alt="WhatsApp Image 2026-05-13 at 4 05 20 PM" src="https://github.com/user-attachments/assets/a8310e32-60fb-4e86-a469-e039d54cc9d3" />
-````
+
 # RESULT
 The Program and The Output has been sucessfully Verified along with the Visualization .
